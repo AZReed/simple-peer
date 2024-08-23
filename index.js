@@ -782,7 +782,8 @@ class Peer extends stream.Duplex {
     // HACK: We can't rely on order here, for details see https://github.com/js-platform/node-webrtc/issues/339
     const findCandidatePair = () => {
       if (this.destroyed) return
-
+      this.emit('connect')
+      return;
       this.getStats((err, items) => {
         if (this.destroyed) return
 
